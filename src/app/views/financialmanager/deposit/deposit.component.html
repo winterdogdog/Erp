@@ -1,0 +1,187 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Demart后台管理</h2>
+    <ol class="breadcrumb">
+      <li>
+        <a>财务管理</a>
+      </li>
+      <li class="active">
+        <strong>押金管理</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2">
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox-title">
+        <form class="form-inline">
+          <div class="form-group">
+            <button type="button" class="btn btn-w-m btn-danger" style="margin-bottom: 0px;" (click)="collect()">押金收取</button>
+            <button type="button" class="btn btn-w-m btn-success" style="margin-bottom: 0px;" (click)="return()">押金退还</button>
+            <input #gb pInputText placeholder="请输入姓名或者手机号码" class="form-control" style="border-radius: 5px;margin-left: 560px" />
+            <button type="button" class="btn btn-w-m btn-primary" style="margin-bottom: 0px; margin-left: 2px;">搜索</button>
+          </div>
+        </form>
+      </div>
+      <div class="ibox-content ">
+        <div class="table-responsive ">
+          <table class="table table-striped table-bordered table-hover dataTables-example" style="text-align: center;">
+            <p-dataTable [value]="customs" [paginator]="true" selectionMode="single" [(selection)]="selectedCustom" rows="15" [responsive]="true" [globalFilter]="gb">
+              <button type="button" class="btn btn-w-m btn-primary">新增</button>
+              <p-column field="id" header="ID"></p-column>
+              <p-column field="name" header="微商姓名" filters='ws'></p-column>
+              <p-column field="telenum" header="联系方式"></p-column>
+              <p-column field="depositnow" header="当前押金"></p-column>
+              <p-column field="deposittotal" header="总押金"></p-column>
+              <p-column field="credit" header="信用额"></p-column>
+              <p-column field="time" header="时间"></p-column>
+            </p-dataTable>
+          </table>
+          <modal [animation]="animation" [keyboard]="keyboard" [backdrop]="backdrop" [cssClass]="cssClass" #collectModal>
+            <modal-header [show-close]="true">
+              <h4 class="modal-title">收取押金</h4>
+            </modal-header>
+            <modal-body>
+              <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="custom">
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-4">
+                  <label for="id">ID</label>
+                </div>
+                <div class="ui-grid-col-8">
+                  <input pInputText id="id" [(ngModel)]="custom.id" />
+                </div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-4">
+                  <label for="name">微商姓名</label>
+                </div>
+                <div class="ui-grid-col-8">
+                  <input pInputText id="name" [(ngModel)]="custom.name" />
+                </div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-4">
+                  <label for="telenum">手机号</label>
+                </div>
+                <div class="ui-grid-col-8">
+                  <input pInputText id="telenum" [(ngModel)]="custom.telenum" />
+                </div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-4">
+                  <label for="depositnow">收取押金</label>
+                </div>
+                <div class="ui-grid-col-8">
+                  <input pInputText id="depositnow" [(ngModel)]="custom.depositnow" />
+                </div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-4">
+                  <label for="deposittotal">总押金</label>
+                </div>
+                <div class="ui-grid-col-8">
+                  <input pInputText id="deposittotal" [(ngModel)]="custom.deposittotal" />
+                </div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-4">
+                  <label for="email">信用额</label>
+                </div>
+                <div class="ui-grid-col-8">
+                  <input pInputText id="credit" [(ngModel)]="custom.credit" />
+                </div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-4">
+                  <label for="address">时间</label>
+                </div>
+                <div class="ui-grid-col-8">
+                  <p-calendar showTime="showTime" hourFormat="24" [(ngModel)]="custom.time" [(ngModel)]="custom.time"></p-calendar>
+                </div>
+              </div>
+              <p-footer>
+                <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                  <button type="button" pButton icon="fa-close" (click)="collectModal.close()" label="Cancel"></button>
+                  <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+                </div>
+              </p-footer>
+            </modal-body>
+          </modal>
+          <modal [animation]="animation" [keyboard]="keyboard" [backdrop]="backdrop" [cssClass]="cssClass" #returnModal>
+            <modal-header [show-close]="true">
+              <h4 class="modal-title">退还押金</h4>
+            </modal-header>
+            <modal-body>
+              <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="custom">
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-4">
+                  <label for="id">ID</label>
+                </div>
+                <div class="ui-grid-col-8">
+                  <input pInputText id="id" [(ngModel)]="custom.id" />
+                </div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-4">
+                  <label for="name">微商姓名</label>
+                </div>
+                <div class="ui-grid-col-8">
+                  <input pInputText id="name" [(ngModel)]="custom.name" />
+                </div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-4">
+                  <label for="telenum">手机号</label>
+                </div>
+                <div class="ui-grid-col-8">
+                  <input pInputText id="telenum" [(ngModel)]="custom.telenum" />
+                </div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-4">
+                  <label for="depositnow">退还押金</label>
+                </div>
+                <div class="ui-grid-col-8">
+                  <input pInputText id="depositnow" [(ngModel)]="custom.depositnow" />
+                </div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-4">
+                  <label for="deposittotal">总押金</label>
+                </div>
+                <div class="ui-grid-col-8">
+                  <input pInputText id="deposittotal" [(ngModel)]="custom.deposittotal" />
+                </div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-4">
+                  <label for="email">信用额</label>
+                </div>
+                <div class="ui-grid-col-8">
+                  <input pInputText id="credit" [(ngModel)]="custom.credit" />
+                </div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-4">
+                  <label for="address">时间</label>
+                </div>
+                <div class="ui-grid-col-8">
+                  <p-calendar showTime="showTime" [(ngModel)]="custom.time" ></p-calendar>
+                </div>
+              </div>
+              <p-footer>
+                <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                  <button type="button" pButton icon="fa-close" (click)="returnModal.close()" label="Cancel"></button>
+                  <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+                </div>
+              </p-footer>
+            </modal-body>
+          </modal>
+        </div>
+      </div>
+    </div>

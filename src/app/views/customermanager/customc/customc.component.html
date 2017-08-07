@@ -1,0 +1,138 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Demart后台管理</h2>
+    <ol class="breadcrumb">
+      <li>
+        <a>运营管理</a>
+      </li>
+      <li class="active">
+        <strong>客户管理</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2">
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox-title">
+        <form class="form-inline">
+          <div class="form-group">
+            <input #ws pInputText placeholder="关联微商" class="form-control serach" style="border-radius: 5px;" />
+            <button type="button" class="btn btn-w-m btn-primary" style="margin-bottom: 0px; margin-left: 2px;" (click)="filter1()">搜索</button>
+            <input #gb pInputText placeholder="请输入姓名或者手机号码" class="form-control" style="border-radius: 5px;margin-left: 450px" />
+            <button type="button" class="btn btn-w-m btn-primary" style="margin-bottom: 0px; margin-left: 2px;">搜索</button>
+          </div>
+        </form>
+      </div>
+      <div class="ibox-content ">
+        <div class="table-responsive ">
+          <table class="table table-striped table-bordered table-hover dataTables-example" style="text-align: center;">
+            <p-dataTable [value]="customs" [paginator]="true" selectionMode="single" [(selection)]="selectedCustom" rows="15" [responsive]="true" [globalFilter]="gb">
+              <button type="button" class="btn btn-w-m btn-primary">新增</button>
+              <p-column field="id" header="ID"></p-column>
+              <p-column field="type" header="微商类型"></p-column>
+              <p-column field="name" header="微商姓名" filters='ws'></p-column>
+              <p-column field="telenum" header="联系方式"></p-column>
+              <p-column field="car" header="车牌号"></p-column>
+              <p-column field="idnum" header="身份证号"></p-column>
+              <p-column field="email" header="e-mail"></p-column>
+              <p-column field="address" header="居住地"></p-column>
+              <p-column>
+                <ng-template let-custom="rowData" let-i="rowIndex" pTemplate="body">
+                  <button type="button" class="btn btn-primary btn-sm" style="margin-bottom: 0px" (click)="edit(custom)">修改</button>
+                </ng-template>
+              </p-column>
+            </p-dataTable>
+          </table>
+          <modal [animation]="animation" [keyboard]="keyboard" [backdrop]="backdrop" [cssClass]="cssClass" #addModal>
+            <modal-header [show-close]="true">
+              <h4 class="modal-title">添加列表</h4>
+            </modal-header>
+            <modal-body>
+              <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="custom">
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-4">
+                  <label for="id">ID</label>
+                </div>
+                <div class="ui-grid-col-8">
+                  <input pInputText id="id" [(ngModel)]="custom.id" />
+                </div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-4">
+                  <label for="type">微商类型</label>
+                </div>
+                <div class="ui-grid-col-8">
+                  <input pInputText id="type" [(ngModel)]="custom.type" />
+                </div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-4">
+                  <label for="name">微商姓名</label>
+                </div>
+                <div class="ui-grid-col-8">
+                  <input pInputText id="name" [(ngModel)]="custom.name" />
+                </div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-4">
+                  <label for="telenum">手机号</label>
+                </div>
+                <div class="ui-grid-col-8">
+                  <input pInputText id="telenum" [(ngModel)]="custom.telenum" />
+                </div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-4">
+                  <label for="car">车牌号</label>
+                </div>
+                <div class="ui-grid-col-8">
+                  <input pInputText id="car" [(ngModel)]="custom.car" />
+                </div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-4">
+                  <label for="idnum">身份证号</label>
+                </div>
+                <div class="ui-grid-col-8">
+                  <input pInputText id="idnum" [(ngModel)]="custom.idnum" />
+                </div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-4">
+                  <label for="email">e-mail</label>
+                </div>
+                <div class="ui-grid-col-8">
+                  <input pInputText id="email" [(ngModel)]="custom.email" />
+                </div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-4">
+                  <label for="address">居住地</label>
+                </div>
+                <div class="ui-grid-col-8">
+                  <input pInputText id="address" [(ngModel)]="custom.address" />
+                </div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-4">
+                  <label for="status">微商状态</label>
+                </div>
+                <div class="ui-grid-col-8">
+                  <input pInputText id="status" [(ngModel)]="custom.status" />
+                </div>
+              </div>
+              <p-footer>
+                <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                  <button type="button" pButton icon="fa-close" (click)="addModal.close()" label="Cancel"></button>
+                  <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+                </div>
+              </p-footer>
+            </modal-body>
+          </modal>
+        </div>
+      </div>
+    </div>

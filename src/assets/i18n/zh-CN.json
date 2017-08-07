@@ -1,0 +1,33 @@
+{
+  "statistic_time_day":"每日",
+  "statistic_time_week":"每周",
+  "statistic_time_month":"每月",
+  "statistic_time_year":"每年",
+
+  "statistic_retailer_status_all":"全部",
+  "statistic_retailer_status_checked":"已审核",
+  "statistic_retailer_status_unchecked":"未审核",
+
+  "statistic_retailer_type_all":"全部零售商",
+  "statistic_retailer_type_retailer":"小B",
+  "statistic_retailer_type_franchisee":"加盟商",
+  "statistic_retailer_type_microRetail":"微零售",
+
+  "statistic_retailer_new":"新增",
+  "statistic_retailer_all":"累积",
+  "statistic_retailer_active":"活跃",
+  "statistic_retailer_silent":"沉默",
+  "statistic_retailer_zombie":"僵尸",
+  "statistic_retailer_valid":"有效",
+
+  "statistic_customer_new":"新增",
+  "statistic_customer_all":"累积",
+
+  "statistic_product_up":"上架商品",
+  "statistic_product_down":"下架商品",
+  "statistic_product_on":"在架商品",
+
+  "statistic_sku_up":"上架SKU",
+  "statistic_sku_down":"下架SKU",
+  "statistic_sku_on":"在架SKU"
+}

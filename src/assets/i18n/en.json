@@ -1,0 +1,33 @@
+{
+  "statistic_time_day":"Day",
+  "statistic_time_week":"Week",
+  "statistic_time_month":"Month",
+  "statistic_time_year":"Year",
+
+  "statistic_retailer_status_all":"All",
+  "statistic_retailer_status_checked":"Checked",
+  "statistic_retailer_status_unchecked":"Unchecked",
+
+  "statistic_retailer_type_all":"All",
+  "statistic_retailer_type_retailer":"Retailer",
+  "statistic_retailer_type_franchisee":"Franchisee",
+  "statistic_retailer_type_microRetail":"Micro Retailer",
+
+  "statistic_retailer_new":"New Retailer",
+  "statistic_retailer_all":"All Retailer",
+  "statistic_retailer_active":"Active Retailer",
+  "statistic_retailer_silent":"Silent Retailer",
+  "statistic_retailer_zombie":"Zombie Retailer",
+  "statistic_retailer_valid":"Valid Retailer",
+
+  "statistic_customer_new":"New Customer",
+  "statistic_customer_all":"All Customer",
+
+  "statistic_product_up":"Up Shelves Goods",
+  "statistic_product_down":"Down Shelves Goods",
+  "statistic_product_on":"On Shelves Goods",
+
+  "statistic_sku_up":"Up Shelves SKU",
+  "statistic_sku_down":"Down Shelves SKU",
+  "statistic_sku_on":"On Shelves SKU"
+}
